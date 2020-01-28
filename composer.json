@@ -7,6 +7,9 @@
         "php": ">=7.2",
         "ext-pthreads": "~3.2.0"
     },
+    "require-dev": {
+        "phpstan/phpstan": "^0.12.8"
+    },
     "autoload": {
         "classmap": ["./src"]
     }

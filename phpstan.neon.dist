@@ -2,21 +2,3 @@ parameters:
 	level: 5
 	paths:
 		- src
-	ignoreErrors:
-		-
-			#pthreads array-access magic
-			message: "#^Cannot access an offset on iterable\\<ThreadedLoggerAttachment\\>&Volatile\\.$#"
-			count: 1
-			path: src/AttachableThreadedLogger.php
-
-		-
-			#pthreads array-access magic
-			message: "#^Cannot access offset mixed on iterable\\<ThreadedLoggerAttachment\\>&Volatile\\.$#"
-			count: 2
-			path: src/AttachableThreadedLogger.php
-
-		-
-			#pthreads array-access magic
-			message: "#^Cannot unset offset mixed on iterable\\<ThreadedLoggerAttachment\\>&Volatile\\.$#"
-			count: 2
-			path: src/AttachableThreadedLogger.php

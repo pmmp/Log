@@ -5,12 +5,16 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['7.2', '7.3', '7.4']
+    name: PHPStan test on PHP ${{ matrix.php-versions }}
     steps:
     - uses: actions/checkout@v2
     - name: Setup PHP Action
       uses: shivammathur/setup-php@2.9.0
       with:
-        php-version: '7.2'
+        php-version: ${{ matrix.php-versions }}
     - name: Cache Composer packages
       id: composer-cache
       uses: actions/cache@v2
@@ -20,6 +24,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
     - name: Install dependencies
-      run: composer install --prefer-dist
+      run: composer install --prefer-dist --no-interaction
     - name: Run PHPStan
       run: ./vendor/bin/phpstan analyze --no-progress

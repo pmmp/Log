@@ -21,8 +21,8 @@ jobs:
       uses: actions/cache@v2
       with:
         path: "~/.composer/cache"
-        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
-        restore-keys: ${{ runner.os }}-composer-
+        key: "php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}"
+        restore-keys: "php-${{ matrix.php }}-composer-"
     - name: Install dependencies
       run: composer install --prefer-dist --no-interaction
     - name: Run PHPStan

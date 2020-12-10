@@ -1,4 +1,4 @@
-name: Run PHP
+name: CI
 
 on: [push, pull_request]
 
@@ -12,7 +12,7 @@ jobs:
     name: PHP ${{ matrix.php }}
     steps:
     - uses: actions/checkout@v2
-    - name: Setup PHP Action
+    - name: Setup PHP
       uses: shivammathur/setup-php@2.9.0
       with:
         php-version: ${{ matrix.php }}

@@ -1,4 +1,4 @@
-name: Run PHPStan
+name: Run PHP
 
 on: [push, pull_request]
 
@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         php: ['7.2', '7.3', '7.4']
-    name: PHPStan test on PHP ${{ matrix.php }}
+    name: PHP ${{ matrix.php }}
     steps:
     - uses: actions/checkout@v2
     - name: Setup PHP Action
@@ -20,10 +20,9 @@ jobs:
       id: composer-cache
       uses: actions/cache@v2
       with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.json') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+        path: "~/.composer/cache"
+        key: "php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}"
+        restore-keys: "php-${{ matrix.php }}-composer-"
     - name: Install dependencies
       run: composer install --prefer-dist --no-interaction
     - name: Run PHPStan

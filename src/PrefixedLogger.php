@@ -19,10 +19,8 @@ declare(strict_types=1);
 
 class PrefixedLogger extends SimpleLogger{
 
-	/** @var Logger */
-	private $delegate;
-	/** @var string */
-	private $prefix;
+	private Logger $delegate;
+	private string $prefix;
 
 	public function __construct(\Logger $delegate, string $prefix){
 		$this->delegate = $delegate;

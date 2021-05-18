@@ -27,8 +27,7 @@ final class GlobalLogger{
 		//NOOP
 	}
 
-	/** @var \Logger|null */
-	private static $logger = null;
+	private static ?\Logger $logger = null;
 
 	public static function get() : \Logger{
 		if(self::$logger === null){

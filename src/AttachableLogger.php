@@ -15,21 +15,24 @@
  * GNU General Public License for more details.
 */
 
+/**
+ * @phpstan-type LoggerAttachment \Closure(mixed $level, string $message) : void
+ */
 interface AttachableLogger extends \Logger{
 
 	/**
-	 * @param LoggerAttachment $attachment
+	 * @phpstan-param LoggerAttachment $attachment
 	 *
 	 * @return void
 	 */
-	public function addAttachment(\LoggerAttachment $attachment);
+	public function addAttachment(\Closure $attachment);
 
 	/**
-	 * @param LoggerAttachment $attachment
+	 * @phpstan-param LoggerAttachment $attachment
 	 *
 	 * @return void
 	 */
-	public function removeAttachment(\LoggerAttachment $attachment);
+	public function removeAttachment(\Closure $attachment);
 
 	/**
 	 * @return void
@@ -37,7 +40,8 @@ interface AttachableLogger extends \Logger{
 	public function removeAttachments();
 
 	/**
-	 * @return \LoggerAttachment[]
+	 * @return \Closure[]
+	 * @phpstan-return LoggerAttachment[]
 	 */
 	public function getAttachments();
 }

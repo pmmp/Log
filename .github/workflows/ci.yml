@@ -11,19 +11,15 @@ jobs:
         php: ['7.4', '8.0', '8.1', '8.2', '8.3']
     name: PHP ${{ matrix.php }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+
     - name: Setup PHP
-      uses: shivammathur/setup-php@2.9.0
+      uses: shivammathur/setup-php@2.29.0
       with:
         php-version: ${{ matrix.php }}
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v2
-      with:
-        path: "~/.composer/cache"
-        key: "php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}"
-        restore-keys: "php-${{ matrix.php }}-composer-"
+
     - name: Install dependencies
       run: composer install --prefer-dist --no-interaction
+
     - name: Run PHPStan
       run: ./vendor/bin/phpstan analyze --no-progress

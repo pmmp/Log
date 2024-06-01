@@ -7,7 +7,7 @@
         "php": "^7.4 || ^8.0"
     },
     "require-dev": {
-        "phpstan/phpstan": "~1.10.59",
+        "phpstan/phpstan": "~1.10.59 || ~1.11.0",
         "phpstan/phpstan-strict-rules": "^1.5.0"
     },
     "conflict": {
